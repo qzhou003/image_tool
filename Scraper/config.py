@@ -2,6 +2,7 @@
 
 import sys, getopt
 from imageDownloader import *
+
 ### params to configure scraper
 
 # ### What to querry from google search
@@ -43,9 +44,12 @@ def main(argv):
          path_to_save_images = arg
       elif opt in ("-p", "--pages"):
           pages = arg
-   print "querry_list is: ", '/'.join(query_list)
+   print("############### Config variables ############")
+   print "querry_list contains : " 
+   for p in query_list: print "\t",p
    print 'path_to_save_images is ', path_to_save_images
    print 'pages : ', pages
+   print("############## End of Config ################\n")
    start(query_list,path_to_save_images,int(pages))   
 
 

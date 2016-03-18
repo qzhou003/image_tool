@@ -7,12 +7,13 @@ find_package(opencv 3 REQUIRED)
 include_directories(&{OpenCV_INCLUDE_DIRS})
 
 if(NOT DEFINED REPO_DIR)
-	set(REPO_DIR ${CMAKE_SOURCE_DIR}/../../)
+	set(REPO_DIR ${CMAKE_SOURCE_DIR})
 endif()
 
 if(NOT DEFINED DETECTION_MANAGER_DIR)
-	set(DETECTION_MANAGER_DIR ${REPO_DIR}/Admobilize_detection/admobilize-detection-manager)
+	set(DETECTION_MANAGER_DIR ${ADM_DIR})
 endif()
+
 message(${DETECTION_MANAGER_DIR})
 
 if (NOT EXISTS "${DETECTION_MANAGER_DIR}/CMakeLists.txt")
