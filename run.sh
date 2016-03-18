@@ -4,19 +4,18 @@
 ### params to configure scraper ###
 
 ################### Google Search ######################
+echo "========================== Querying Images ================================="
 ## What to querry from google search
 # search terms seperated by /
 querry_list="test qi zhou fiu/test tennis/test admoblize" 
-
 # Each page has 20 pictures by default, pages =25, means 25*20 images will be saved.
 pages=25
-
 # ### where to save the qurried picture, each query in the list will be saved in a different folder
 path_to_save_images="/Users/qizhou/Documents/DownloadImages/downloadedImages/"
-
 #python Scraper/config.py -q "$querry_list" -s "$path_to_save_images" -p "$pages"
 
 ################## To run image selector ###############
+echo "========================== Building Image Selector ================================="
 IMAGE_SELECTOR_BUILD_DIR=Image_Selector/build
 if [ -d "$IMAGE_SELECTOR_BUILD_DIR" ]; then
   	echo 'We found build folder: '"$IMAGE_SELECTOR_BUILD_DIR"
@@ -39,7 +38,9 @@ cd "$IMAGE_SELECTOR_BUILD_DIR"
 cmake -DADM_DIR:string="$ADM_DIR" ..
 make
 
-############# Create script for the images ##################
+############# Create script for the images ################
+
+echo "========================== Creating Script ================================="
 cd ../../
 path_to_save_txt_file=/Users/qizhou/Documents/DownloadImages/downloadedImages/
 python Helper/scriptor.py -p "$path_to_save_txt_file"

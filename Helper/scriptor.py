@@ -37,7 +37,6 @@ def createScriptForOneFolder(sub_dir):
 	for file in images_grabbed:
 		image_full_path = os.path.join(sub_dir,file)
 		f.write(image_full_path+ '\n')
-		global c
 		c = c+1
 	f.close()
 	 # print "sub_dir : ", sub_dir
@@ -54,5 +53,4 @@ if __name__ == "__main__":
 	parseArg(sys.argv[1:])
 	printImagePath()
 	createScript();
-	global c
 	print "Total images written : ", c
