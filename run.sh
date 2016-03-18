@@ -16,8 +16,6 @@ path_to_save_images="/Users/qizhou/Documents/DownloadImages/downloadedImages/"
 
 #python Scraper/config.py -q "$querry_list" -s "$path_to_save_images" -p "$pages"
 
-
-
 ################## To run image selector ###############
 IMAGE_SELECTOR_BUILD_DIR=Image_Selector/build
 if [ -d "$IMAGE_SELECTOR_BUILD_DIR" ]; then
@@ -39,3 +37,11 @@ fi
 
 cd "$IMAGE_SELECTOR_BUILD_DIR"
 cmake -DADM_DIR:string="$ADM_DIR" ..
+make
+
+############# Create script for the images ##################
+cd ../../
+path_to_save_txt_file=/Users/qizhou/Documents/DownloadImages/downloadedImages/
+python Helper/scriptor.py -p "$path_to_save_txt_file"
+
+

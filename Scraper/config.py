@@ -38,7 +38,6 @@ def main(argv):
          print 'config.py -q <querry_list> -s <path_to_save_images> -p <pages>'
          sys.exit()
       elif opt in ("-q", "--querry_list"):
-         # inputfile = arg
          query_list = arg.split('/')
       elif opt in ("-s", "--path_to_save_images"):
          path_to_save_images = arg
