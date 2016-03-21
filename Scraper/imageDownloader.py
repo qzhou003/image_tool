@@ -28,7 +28,7 @@ def start(query_list,path_to_save_images,pages):
 		for iteration in range(0,pages):
 			paginate = 20*iteration
 			url=url="https://www.google.co.in/search?q="+query+"&source=lnms&tbm=isch&start="+str(paginate);
-			print ("page = %d" %iteration)
+			print ("page = %d" %(iteration+1))
 			header = {'User-Agent': 'Mozilla/5.0'} 
 			soup = get_soup(url,header)
 			images = [a['src'] for a in soup.find_all("img", {"src": re.compile("gstatic.com")})]
@@ -37,8 +37,9 @@ def start(query_list,path_to_save_images,pages):
 			  raw_img = readURL(img) 
 			  #add the directory for your image here 
 			  ori_query = ori_query.replace (" ", "_")
-			  DIR=path_to_save_images+ori_query+"/";
+			  DIR=path_to_save_images+"/"+ori_query+"/";
 			  if not os.path.exists(DIR):
+			  		 print DIR, " doesn't exisit, a new one is created!"
 		   			 os.makedirs(DIR)
 			  cntr = len([i for i in os.listdir(DIR) if image_type in i]) + 1
 			  thres = pages*20

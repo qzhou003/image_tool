@@ -9,40 +9,44 @@ using namespace cv;
 
 string script_path="";
 string destination="";
+string model="";
 
 void usage(const std::string &app_name)
 {
-	printf("Usage: %s <path_of_image_script> <path_to_save_precocessed_images>\n", app_name.c_str());
+	printf("Usage: %s <path_of_image_script> <path_to_save_precessed_images> <face_model_path\n", app_name.c_str());
 }
 
 int parser(int argc, char *argv[])
 {
-	if(argc == 3)
+	if(argc == 4)
 	{
 		script_path = argv[1];
 		destination = argv[2];
+		model = argv[3];
 		return 0;
 	} 
 	usage(argv[0]);
+	return 0;
 }
 
 int main(int argc, char *argv[])
 {
-
+	parser(argc,argv);
 	ifstream file(script_path, ifstream::in);
 	string destination_faces = destination + "/photo_with_faces/";
 	string destination_no_faces = destination + "/photo_no_faces/";
 
 	if(!file.is_open()) 
 	{
-		cout << "Error opening file" << endl;
+		cout << "Error opening script file" << endl;
 		return 0;
+	} else {
+		cout << "Found and Opened script file successfully." << endl;
 	}
 
 	string imageFullPath;
 	Mat image,oriImage;
-
-	string model ="/Users/qizhou/Documents/Admobilize_detection/admobilize-detection-examples/models1/pico/face-March.dat";
+	cout << " model = " << model << endl;
 	PicoDetector detector(&image, 10,200,10,model);
 
 	while (getline(file,imageFullPath))
@@ -57,7 +61,6 @@ int main(int argc, char *argv[])
 		vector<Rect> rects; rects.push_back(Rect(0, 0, image.cols, image.rows));
 		std::vector<cv::Rect> detections = detector.run_smartscales_in(rects,0.01);
 		imshow("images",image);
-		cin.get();
 		waitKey(10);
 
 		int index = imageFullPath.find_last_of("/");
@@ -72,7 +75,6 @@ int main(int argc, char *argv[])
 
             string fileName = imageFullPath.substr(index+1,len-1);
            	string imagePath = destination_faces + '/' +fileName;
-           	cout << imagePath << endl;
 			imwrite(imagePath,image);
 
 		} else {
@@ -84,7 +86,6 @@ int main(int argc, char *argv[])
 
 			string fileName = imageFullPath.substr(index+1,len-1);
            	string imagePath = destination_no_faces + '/' +fileName;
-           	cout << imagePath << endl;
 			imwrite(imagePath,image);
 		}
 	}

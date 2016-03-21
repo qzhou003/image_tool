@@ -25,7 +25,7 @@ from imageDownloader import *
 
 query_list = []
 pages = 25
-path_to_save_images = ""
+path_to_save_images = "2"
 
 def main(argv):
    try:

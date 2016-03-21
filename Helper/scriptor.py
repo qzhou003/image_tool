@@ -25,7 +25,8 @@ def printImagePath():
 def createScriptForOneFolder(sub_dir):
 	global scriptor_path
 	os.chdir(scriptor_path)
-	f = open("images.txt", "a")
+	print "script_path = ",scriptor_path
+	f = open("images.txt", "w+")
 	os.chdir(sub_dir)
 	global c
 	local_c = c
