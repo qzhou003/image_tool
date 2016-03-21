@@ -1,9 +1,13 @@
 #!/bin/bash
 
+#---------------------------------Variables to be configured------------------------------
+# The directory of the image_tool repo
 REPO_DIR=/Users/qizhou/Documents/DownloadImages/image_tool/  #with "/" to the end please
+# The directory of admobilize detection manager repo
 ADM_DIR=/Users/qizhou/Documents/Admobilize_detection/admobilize-detection-manager
+# The face model will be used to do face detection for image selection purpose
 MODEL=/Users/qizhou/Documents/Admobilize_detection/admobilize-detection-examples/models1/pico/face-March.dat
-
+# To indicate if you want to build the admobilize detection manager or not
 BUILD_IMAGE_SELECTOR=1
 ### params to configure scraper ###
 ################### Google Search ######################
@@ -14,6 +18,9 @@ cd $REPO_DIR
 querry_list="asians/chinese star/chinese people/asian people/japan faces/korean faces" 
 # Each page has 20 pictures by default, pages =25, means 25*20 images will be saved.
 pages=20
+# The above variables need to be configured before run.
+#---------------------------------------end of variable configuration------------------------------------------
+
 # ### pictures will be saved in a folder called Downloaded_Images, each query in the list will be saved in a different folder
 path_to_save_images=Downloaded_Images
 if [ -d $path_to_save_images ];then
