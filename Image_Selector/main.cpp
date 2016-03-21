@@ -7,10 +7,29 @@
 using namespace std;
 using namespace cv;
 
+string script_path="";
+string destination="";
+
+void usage(const std::string &app_name)
+{
+	printf("Usage: %s <path_of_image_script> <path_to_save_precocessed_images>\n", app_name.c_str());
+}
+
+int parser(int argc, char *argv[])
+{
+	if(argc == 3)
+	{
+		script_path = argv[1];
+		destination = argv[2];
+		return 0;
+	} 
+	usage(argv[0]);
+}
+
 int main(int argc, char *argv[])
 {
-	ifstream file("/Users/qizhou/Documents/DownloadImages/image_selection/images.txt", ifstream::in);
-	string destination = "/Users/qizhou/Documents/DownloadImages/image_selection/processed_pics";
+
+	ifstream file(script_path, ifstream::in);
 	string destination_faces = destination + "/photo_with_faces/";
 	string destination_no_faces = destination + "/photo_no_faces/";
 

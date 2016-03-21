@@ -53,4 +53,4 @@ if __name__ == "__main__":
 	parseArg(sys.argv[1:])
 	printImagePath()
 	createScript();
-	print "Total images written : ", c
+	print "There are total ", c, " iamges written in "+scriptor_path +"/images.txt!"
