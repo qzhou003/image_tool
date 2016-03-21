@@ -41,8 +41,8 @@ make
 ############# Create script for the images ################
 
 echo "========================== Creating Script ================================="
-cd ../../
 path_to_save_txt_file=/Users/qizhou/Documents/DownloadImages/downloadedImages/
+cd ../../
 python Helper/scriptor.py -p "$path_to_save_txt_file"
 
 
